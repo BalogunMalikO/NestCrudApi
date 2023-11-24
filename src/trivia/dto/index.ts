@@ -1,0 +1,1 @@
+import { TriviaDto } from "./trivia.dto";
