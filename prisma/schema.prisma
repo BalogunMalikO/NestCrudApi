@@ -12,8 +12,12 @@ datasource db {
 
 model trivia {
   id Int @id @default(autoincrement()) @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime  @default(now())
+
+  title String
   question String
   answer String
-  crearedt DateTime @default(now())
+
   
 }
