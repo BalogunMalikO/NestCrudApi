@@ -5,11 +5,11 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
-  Req,
+ 
 } from '@nestjs/common';
 import { TriviaService } from './trivia.service';
 import { TriviaDto } from './dto/trivia.dto';
+import { title } from 'process';
 
 @Controller('trivia')
 export class TriviaController {
@@ -21,24 +21,24 @@ export class TriviaController {
     return this.triviaService.create(dto);
   }
 
-  @Get('/id')
-  findAll(@Param('id') id) {
+  @Get('/:id')
+  findID(@Param("id") id: number ){
     return this.triviaService.findbyID(id);
   }
 
-  @Get('Findone')
-  findOne(@Param('id') dto: TriviaDto) {
-    return this.triviaService.findAllfield(dto);
+  @Get('FindFields')
+  findOne(@Body() dto: TriviaDto) {
+    return this.triviaService.findAllfield();
   }
 
-  @Get("/question")
-  findbyId(@Body() dto: TriviaDto) {
+  @Get('/question')
+  find_question(@Body() dto: TriviaDto) {
     return this.triviaService.findbyQuestion(dto);
   }
 
   @Patch('/update')
-  update(@Param() title: string, @Body() dto: TriviaDto) {
-    return this.triviaService.updateQuestion( dto);
+  update(@Body() dto: TriviaDto) {
+    return this.triviaService.updateQuestion(dto);
   }
 
   // @Delete(':id')

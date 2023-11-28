@@ -19,30 +19,33 @@ export class TriviaService {
   }
 
   async findbyID(id: number) {
-    let allQuestions = await this.prisma.trivia.findMany({
-      where: { id: id },
+    let allQuestions = await this.prisma.trivia.findUnique({
+      where: { id: Number(id)},
+     
     });
-    return { allQuestions };
+    return allQuestions;
   }
 
-  async findAllfield(dto: TriviaDto) {
+  async findAllfield() {
     let getId = await this.prisma.trivia.fields;
     return getId;
   }
 
   async findbyQuestion(dto: TriviaDto) {
-    let get = await this.prisma.trivia.findMany({
-      where: { question: dto.question },
+    let getQuestion = await this.prisma.trivia.findMany({
+      where: { question: dto.question }
+      
     });
-    return get;
+    return getQuestion;
   }
 
   async updateQuestion(dto: TriviaDto) {
     let updatedData = await this.prisma.trivia.updateMany({
-      where: { title: dto.title },
-      data: { title: dto.title },
+      where: { title: dto.title},
+      data:{title: dto.title},
+
     });
-    return {updatedData};
+    return updatedData;
   }
 }
 
