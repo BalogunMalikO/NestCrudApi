@@ -36,7 +36,7 @@ export class TriviaController {
     return this.triviaService.findbyQuestion(dto);
   }
 
-  @Patch('')
+  @Patch('/update')
   update(@Param() title: string, @Body() dto: TriviaDto) {
     return this.triviaService.updateQuestion( dto);
   }
