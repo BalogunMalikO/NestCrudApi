@@ -26,7 +26,7 @@ export class TriviaService {
     return allQuestions;
   }
 
-  async findAllfield() {
+  async findAllfield(dto :TriviaDto) {
     let getId = await this.prisma.trivia.fields;
     return getId;
   }
@@ -39,13 +39,18 @@ export class TriviaService {
     return getQuestion;
   }
 
-  async updateQuestion(dto: TriviaDto) {
-    let updatedData = await this.prisma.trivia.updateMany({
-      where: { title: dto.title},
-      data:{title: dto.title},
+  async updateQuestion(dto: TriviaDto ) {
+    let updatedData = await this.prisma.trivia.findMany({
+      where: { title: dto.title}
 
     });
-    return updatedData;
+    updatedData
+    return this.prisma.trivia.updateMany({
+      where:{title: dto.title},
+      data:{
+        ...dto
+      }
+    });
   }
 }
 

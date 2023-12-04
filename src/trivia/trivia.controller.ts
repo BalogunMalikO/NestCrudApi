@@ -21,18 +21,18 @@ export class TriviaController {
     return this.triviaService.create(dto);
   }
 
-  @Get('/:id')
-  findID(@Param("id") id: number ){
+   @Get('/id')
+   findID(@Body("id") id: number ){
     return this.triviaService.findbyID(id);
-  }
+   }
 
   @Get('FindFields')
   findOne(@Body() dto: TriviaDto) {
-    return this.triviaService.findAllfield();
+    return this.triviaService.findAllfield(dto);
   }
 
   @Get('/question')
-  find_question(@Body() dto: TriviaDto) {
+  find_question(@Body()dto: TriviaDto ) {
     return this.triviaService.findbyQuestion(dto);
   }
 

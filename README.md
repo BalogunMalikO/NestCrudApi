@@ -51,10 +51,28 @@ The firdt one is create endpoint: It can be used to create post data into the da
 
 the above endpoint returns ok with the data logged in the console.
 
+the payload: 
+``` bash 
+${
+    "title":"About love",
+    "question": "what is love",
+    "answer": "love is magic"
+    
+}
+
+```
+
 
 Another endpoint is get question endpoint:
 
 ```localhost:3000/trivia/question```
+payload: 
+``` bash
+${
+"question":"what is hello in yoruba"
+}
+```
+
 
 it takes a body of the question:"your question" and returns the data attributted with that input.
 
@@ -67,8 +85,17 @@ this return all the fields in the database
 Another end point is get data by id endpoint:
 It is used to fetch data in the database using its id
 
-```localhost:3000/trivia/"id"```
+```localhost:3000/trivia/id```
 
+the payload:
+```bash
+${
+    
+    
+    "id":"1"    
+    
+}
+```
 
 it return data belonging to the id searched
 
